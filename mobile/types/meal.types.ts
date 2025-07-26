@@ -16,5 +16,6 @@ export interface TransformedMeal {
   area?: string; // Optional vì có thể không có trong dữ liệu gốc
   ingredients: string[];
   instructions: string[];
+  youtubeUrl?: any;
   originalData: any; // Giữ nguyên kiểu any vì dữ liệu gốc có cấu trúc phức tạp
 }

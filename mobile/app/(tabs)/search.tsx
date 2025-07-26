@@ -13,6 +13,7 @@ import { searchStyles } from "../../assets/styles/search.styles";
 import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "@/constants/colors";
 import RecipeCard from "@/components/RecipeCard";
+import LoadingSpinner from "@/components/LoadingSpinner";
 const SearchScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [recipes, setRecipes] = useState<TransformedMeal[]>([]);
@@ -74,7 +75,8 @@ const SearchScreen = () => {
     handleSearch();
   }, [debouncedSearchQuery, initialLoading]);
 
-  if (initialLoading) return <Text>Loaidng....</Text>;
+  if (initialLoading)
+    return <LoadingSpinner size={"large"} message="Loading recipes..." />;
 
   return (
     <View style={searchStyles.container}>
@@ -118,7 +120,7 @@ const SearchScreen = () => {
         </View>
         {loading ? (
           <View style={searchStyles.loadingContainer}>
-            <Text>Loading...</Text>
+            <LoadingSpinner size={"small"} message="Searching recipes..." />
           </View>
         ) : (
           <FlatList

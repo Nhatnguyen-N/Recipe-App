@@ -16,6 +16,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "@/constants/colors";
 import CategoryFilter from "@/components/CategoryFilter";
 import RecipeCard from "@/components/RecipeCard";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -89,6 +90,10 @@ export default function HomeScreen() {
   useEffect(() => {
     loadData();
   }, []);
+  if (loading && !refreshing)
+    return (
+      <LoadingSpinner message="Loading delicions recipes..." size={"large"} />
+    );
   return (
     <View style={homeStyles.container}>
       <ScrollView

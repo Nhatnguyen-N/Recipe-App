@@ -12,7 +12,7 @@ export default function RecipeCard({ recipe }: { recipe: TransformedMeal }) {
   return (
     <TouchableOpacity
       style={recipeCardStyles.container}
-      // onPress={() => router.push(`/recipe/${recipe.id}`)}
+      onPress={() => router.push(`/recipe/${recipe.id}`)}
       activeOpacity={0.8}
     >
       <View style={recipeCardStyles.imageContainer}>
