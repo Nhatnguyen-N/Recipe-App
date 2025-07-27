@@ -83,7 +83,8 @@ export default function HomeScreen() {
   const onRefresh = async () => {
     setRefreshing(true);
     await sleep(500);
-    await loadData();
+    // await loadData();
+    await loadCategoryData(selectedCategory!);
     setRefreshing(false);
   };
 
@@ -137,7 +138,7 @@ export default function HomeScreen() {
             <TouchableOpacity
               style={homeStyles.featuredCard}
               activeOpacity={0.9}
-              // onPress={()=>router.push(`/recipe/${featuredRecipe.id}`)}
+              onPress={() => router.push(`/recipe/${featuredRecipe.id}`)}
             >
               <View style={homeStyles.featuredImageContainer}>
                 <Image
@@ -192,6 +193,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
           </View>
         )}
+
         {categories.length > 0 && (
           <CategoryFilter
             categories={categories}
